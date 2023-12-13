@@ -1,0 +1,63 @@
+
+
+  body {
+    padding:
+      0;
+    margin:
+      0;
+    background:
+      #000000;
+    height: 100%;
+    position:relative;
+    overflow: hidden;
+    width: 100%;
+    cursor: none;
+    }
+canvas {
+    display:
+      block;
+    position:
+      absolute;
+    left:
+      50%;
+    top:
+      50%;
+    transform:
+      translate(-50%, -50%);
+    width:
+      50%;
+    height:
+      50%;
+    text-align:
+      center;
+    z-index: 1000;
+}
+iframe {
+  position:fixed; 
+  top:0; 
+  left:0; 
+  bottom:0; 
+  right:0; 
+  width:100%; 
+  height:100%; 
+  border:none; 
+  margin:0; 
+  padding:0; 
+  overflow:hidden;
+  z-index:10000;
+}
+#fader {
+  pointer-events: none;
+  background:
+  #000000;
+  position:relative; 
+  height: 100%; 
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 999999;
+  opacity: 0;
+  transition: opacity 1.2s; 
+}
