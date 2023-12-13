@@ -50,6 +50,7 @@ class Spring {
 		}
 		this.x = this.pos.x;
 		this.y = this.pos.y;
+    
 	}
 	
 	display() {
