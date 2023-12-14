@@ -16,8 +16,8 @@ class Spring {
   
       // spring variables
       this.velocity = createVector(0, 0);
-      this.accel = 0.5; // Acceleration
-      this.force = 0; // Force
+      this.accel = 0.8; // Acceleration
+      this.force = 10; // Force
   
       this.block = blocks1;
       this.block2 = blocks2;
@@ -71,11 +71,11 @@ class Spring {
 
               let currentLetter = this.block
 
-              if (poster.posNormal.x >= 0.9) {
+              if (poster.posNormal.x >= 0.95) {
                 currentLetter = this.block2;
               }
         
-              if (poster.posNormal.x > 0.6) {
+              if (poster.posNormal.x > 0.95) {
                 // Invert colors after 100px of mouseX
                 if (currentLetter == '0') {
                   fill(255); // White
