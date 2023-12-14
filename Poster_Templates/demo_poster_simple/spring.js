@@ -26,17 +26,17 @@ class Spring {
     }
 
 	update() { 
-		let attractor = createVector(mouseX, mouseY);
+		let attractor = createVector(poster.position.x,poster.position.y);
 		let distanceX = abs(this.anchor.x - attractor.x);
 		let distanceY = abs(this.anchor.y - attractor.y);
 		distanceY += 1;
-		distanceY = distanceY/1000
+		distanceY = distanceY/height
 
-		if (distanceX < 500) {
+		if (distanceX < poster.vw * 40 && poster.position.x > poster.vw* 10&& poster.position.x < width-poster.vw*5 ) {
 			// make the point stick to the attractor 
 			this.velocity = attractor.copy();
 			this.velocity.sub(this.pos);
-			this.velocity.mult(0.02);
+			this.velocity.mult(0.01);
 			this.pos.x += this.velocity.x / distanceY;
 
       // Reset transitionX when not transitioning
@@ -71,34 +71,49 @@ class Spring {
 
               let currentLetter = this.block
 
-              if (mouseX >= 900) {
+              if (poster.posNormal.x >= 0.9) {
                 currentLetter = this.block2;
               }
         
-              if (currentLetter == '0') {
-                //black (empty) rectangle
-                fill(0, 0,0);
-                rect(x,  y, poster.vw*2.5, poster.vh*5);
+              if (poster.posNormal.x > 0.6) {
+                // Invert colors after 100px of mouseX
+                if (currentLetter == '0') {
+                  fill(255); // White
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5.2);
+                } else if (currentLetter == '1') {
+                  fill(0); // Black
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5);
+                } else if (currentLetter == '2') {
+                  fill(0); // Black
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5.2);
+                  fill(255); // White
+                  rect(x + poster.vw * 1.8, y - 0.2, poster.vw * 1.25, poster.vh * 5.8);
+                } else if (currentLetter == '3') {
+                  fill(0); // Black
+                  rect(x, y, poster.vw * 2.8, poster.vh * 5.05);
+                  fill(255); // White
+                  rect(x - 0.3, y -0.2, poster.vw * 1.3, poster.vh * 5.8);
+                }
+              } else {
+                // Regular colors before 100px of mouseX
+                if (currentLetter == '0') {
+                  fill(0, 0, 0);
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5.2);
+                } else if (currentLetter == '1') {
+                  fill(255);
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5.2);
+                } else if (currentLetter == '2') {
+                  fill(255);
+                  rect(x, y, poster.vw * 2.55, poster.vh * 5.2);
+                  fill(0, 0, 0);
+                  rect(x + poster.vw * 1.8, y, poster.vw * 1.25, poster.vh * 5.2);
+                } else if (currentLetter == '3') {
+                  fill(255);
+                  rect(x, y, poster.vw * 2.8, poster.vh * 5.05);
+                  fill(0);
+                  rect(x - 0.3, y -0.2, poster.vw * 1.3, poster.vh * 5.5);
 
-              } else if (currentLetter == '1') {
-                //white rectangle
-                fill(255);
-                rect(x, y, poster.vw*2.5, poster.vh*5);
-
-              } else if (currentLetter =='2') {
-                //rectangle with black stripe on the right
-                fill(255);
-                rect(x, y, poster.vw*2.5, poster.vh*5);
-                fill(0, 0, 0);
-                rect(x+poster.vw*1.25, y, poster.vw*1.25, poster.vh*5);
-
-              } else if (currentLetter =='3') {
-                //rectangle with black stripe on the left
-                fill(255);
-                rect(x, y, poster.vw*2.5, poster.vh*5);
-                fill(0);
-                rect(x , y , poster.vw*1.25, poster.vh*5);
-              }
-        
+      }   
+    }    
 	}
 }

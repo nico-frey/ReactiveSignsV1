@@ -69,7 +69,16 @@ function setup() {
 /*important!*/ poster.setup(this,  "/Poster_Templates/libraries/assets/models/movenet/model.json");  // Don't remove this line.
 
   textAlign(CENTER, CENTER);
+  setupGrid()
 
+}
+
+function windowScaled() {
+  setupGrid() 
+}
+
+function setupGrid() {
+   points = [];
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       let x = j  * poster.vw*2.5;
@@ -87,7 +96,8 @@ function draw() {
 
   for (let i = 0; i < points.length; i++) {
     points[i].display();
-  }
-  console.log(blocks1.length);
 
+   //filter(INVERT);
+  }
 }
+
